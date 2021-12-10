@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+</head>
+<style>
+    .mainclass{
+        margin-left: 30vw;
+        background-color: #fdfff5;
+        padding-left: 6.5vw;
+        margin-top: 10vh;
+        width: 40vw;
+        height: 80vh;
+
+    }
+    body{
+        background-color: #dedddd;
+       
+    }
+    .inputs{
+        width: 80%;
+        height: 6vh;
+        margin-bottom: 2vh;
+        margin-top: 1vh;
+        border: 1px solid #1b1b1b;
+        border-radius: 0.5vw;
+    }
+    input:focus{
+        outline: none;
+    }
+    #human
+    {
+        margin-top: 2vh;
+        margin-left: 6vw;
+        width: 40%;
+        height: 20vh;
+        
+    }
+    form{
+        margin-top: 2vh;
+    }
+    span{
+        margin-left: 0.5vw;
+        font-size: 2.1vh;
+        color: #df2923;
+    }
+    #button{
+        margin-top: 2vh;
+        margin-left: 8vw;
+        margin-bottom: 2vh;
+        height: 6.5vh;
+        width: 10vw;
+        border-radius: 1vh;
+        font-size: 2.6vh;
+        background-color: #dedddd;
+        display: block;
+    }
+    a{
+        margin-left: 8.5vw;
+        
+    }
+
+</style>
+<body>
+   <div class="mainclass">
+       <img src="img/icons8-login-90.png" id="human" >
+       
+       
+           <input type="text" name="email" id="email" class="inputs" placeholder="Email" autocomplete="off" required>
+           <input type="password" name="password" id="password" class="inputs" placeholder="Password" autocomplete="off" required>
+           <button type="submit" id="button" class="buttons" onclick="Button()">Login</button>
+           <a href="signup.html">Create new Account</a>
+       
+   </div>
+
+    
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+<script>
+    var firebaseConfig = {
+  
+  apiKey: "AIzaSyB1SEaWtKNyYHwepc91rRIys7qrAn3VCQ0",
+
+  authDomain: "form-efe8c.firebaseapp.com",
+
+  databaseURL: "https://form-efe8c-default-rtdb.firebaseio.com",
+
+  projectId: "form-efe8c",
+
+  storageBucket: "form-efe8c.appspot.com",
+
+  messagingSenderId: "1007553602245",
+
+  appId: "1:1007553602245:web:6bea88e0de9877ce7ac6ac"
+
+};
+ firebase.initializeApp(firebaseConfig);
+ const auth = firebase.auth();
+ var db = firebase.firestore();
+
+
+    function Button(){
+    var email = document.getElementById("email").value;
+        var pass = document.getElementById("password").value;
+
+
+         firebase.auth().signInWithEmailAndPassword(email, pass)
+  .then((userCredential) => {
+    
+    localStorage.setItem('name', email);
+    window.location.href = "home.html";
+    
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error:" + errorMessage);
+  });
+
+
+        
+
+ }
+
+</script>
+</html>

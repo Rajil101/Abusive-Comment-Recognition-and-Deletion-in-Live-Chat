@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+</head>
+<style>
+    .mainclass{
+        margin-left: 30vw;
+        background-color: #fdfff5;
+        padding-left: 6.5vw;
+        margin-top: 10vh;
+        width: 40vw;
+        height: 80vh;
+
+    }
+    body{
+        background-color: #dedddd;
+    }
+    .inputs{
+        width: 80%;
+        height: 6vh;
+        margin-bottom: 1vh;
+        margin-top: 1vh;
+        border: 1px solid #1b1b1b;
+        border-radius: 0.5vw;
+    }
+    input:focus{
+        outline: none;
+    }
+    #human
+    {
+        margin-top: 2vh;
+        margin-left: 5vw;
+        width: 50%;
+        height: 20vh;
+        
+    }
+    form{
+        margin-top: 2vh;
+    }
+    span{
+        margin-left: 0.5vw;
+        font-size: 2.1vh;
+        color: #df2923;
+    }
+    #button{
+        margin-top: 2vh;
+        margin-left: 8vw;
+        height: 6.5vh;
+        width: 10vw;
+        border-radius: 1vh;
+        font-size: 2.6vh;
+        background-color: #dedddd;
+    }
+
+</style>
+<body>
+   <div class="mainclass">
+       <img src="img/human.png" id="human">
+    
+           <input type="text" id="name" class="inputs" placeholder="Name"   autocomplete="off" required><br> <span id="spanname"></span><br>
+           <input type="text" id="email" class="inputs" placeholder="Email" oninput="emaila()" autocomplete="off" required><br> <span id="spanemail"></span><br>
+           <input type="text" id="phone" class="inputs" placeholder="Phone Number" oninput="nnnumber()" autocomplete="off" required><br> <span id="spanphone"></span><br>
+           <input type="password" id="password" class="inputs" placeholder="Password" oninput="myFunctionpass()" autocomplete="off" required><br> <span id="spanpassword"></span><br>
+           <button id="button" class="buttons" onclick="Button()">Register</button>
+       
+   </div>
+
+    
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+<script>
+var firebaseConfig = {
+  
+  apiKey: "AIzaSyB1SEaWtKNyYHwepc91rRIys7qrAn3VCQ0",
+
+  authDomain: "form-efe8c.firebaseapp.com",
+
+  databaseURL: "https://form-efe8c-default-rtdb.firebaseio.com",
+
+  projectId: "form-efe8c",
+
+  storageBucket: "form-efe8c.appspot.com",
+
+  messagingSenderId: "1007553602245",
+
+  appId: "1:1007553602245:web:6bea88e0de9877ce7ac6ac"
+
+};
+ firebase.initializeApp(firebaseConfig);
+ const auth = firebase.auth();
+ var db = firebase.firestore();
+
+ 
+</script>
+<script>
+
+
+
+ 
+ 
+ function Button()
+ {
+    var email = document.getElementById("email").value;
+  var name = document.getElementById("name").value;
+  var number = document.getElementById("phone").value;
+  var password = document.getElementById("password").value;
+  var numbers = /[0-9]/g;
+  var lowerCaseLetters = /[a-z]/g;
+  var upperCaseLetters = /[A-Z]/g;
+  var phoneno = /^\d{10}$/;
+  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if(!email.match(validRegex))
+  {
+      alert("Invalid Email");
+      return false;
+  }
+  
+  if (!number.match(phoneno) ) {
+    alert("Phone Number follow correct format");
+    
+    return false;
+  }
+  if (!(password.length>6 &&
+   (password.length<20))  ) {
+    alert("Password must be between 6 and 20 ");
+    
+    return false;
+  }
+  
+  if (!(password.match(lowerCaseLetters) && (password.match(upperCaseLetters)) && (password.match(numbers)) ) ) {
+    alert(" Choose Strong Password");
+    
+    return false;
+  }
+
+
+
+
+  var email1 = document.getElementById("email").value;
+  var name1 = document.getElementById("name").value;
+  var number1 = document.getElementById("phone").value;
+  var password1 = document.getElementById("password").value;
+  const promise = auth.createUserWithEmailAndPassword(email1,password1);
+  promise.catch(e=>alert(e.message));
+  setTimeout(function(){ 
+      
+   
+    db.collection("registration").doc(email1).set({
+    Name: name1,
+    Email: email1,
+    Phone: number1,
+    Password: password1
+})
+.then(() => {
+    console.log("Document successfully written!");
+    window.location.href = "index.html";
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+
+});
+  
+  
+  
+  ; }, 3000);
+  
+ }
+
+
+
+    function validateForm() {
+  var email = document.getElementById("email").value;
+  var name = document.getElementById("name").value;
+  var number = document.getElementById("phone").value;
+  var password = document.getElementById("password").value;
+  var numbers = /[0-9]/g;
+  var lowerCaseLetters = /[a-z]/g;
+  var upperCaseLetters = /[A-Z]/g;
+  var phoneno = /^\d{10}$/;
+  var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  
+  
+  if (!number.match(phoneno) ) {
+    alert("Phone Number follow correct format");
+    
+    return false;
+  }
+  if (!(password.length>6 &&
+   (password.length<20))  ) {
+    alert("Password must be between 6 and 20 ");
+    
+    return false;
+  }
+  
+  if (!(password.match(lowerCaseLetters) && (password.match(upperCaseLetters)) && (password.match(numbers)) ) ) {
+    alert(" Choose Strong Password");
+    
+    return false;
+  }
+  
+  
+}
+
+  var email = document.getElementById("email").value;
+  var name = document.getElementById("name").value;
+  
+  var password = document.getElementById("password").value;
+  var numbers = /[0-9]/g;
+  var lowerCaseLetters = /[a-z]/g;
+  var upperCaseLetters = /[A-Z]/g;
+  var phoneno = /^\d{10}$/;
+
+
+  function myFunctionpass() {
+    var password = document.getElementById("password").value;
+    var lowerCaseLetters = /[a-z]/g;
+    var numbers = /[0-9]/g;
+    var upperCaseLetters = /[A-Z]/g;
+    if(!(password.match(lowerCaseLetters))){
+        document.getElementById("spanpassword").innerHTML = "Include 1 Lower case letter";
+    }
+    else if(!(password.match(upperCaseLetters))){
+        document.getElementById("spanpassword").innerHTML = "Include 1 Upper case letter";
+    }
+    else if(!(password.match(numbers))){
+        document.getElementById("spanpassword").innerHTML = "Include 1 Number";
+    }
+    else if(!(password.length>6)){
+      document.getElementById("spanpassword").innerHTML = "Length must be in between 6 and 20";
+    }
+    else if(!(password.length<20)){
+      document.getElementById("spanpassword").innerHTML = "Length must be in between 6 and 20";
+    }
+    else{
+        document.getElementById("spanpassword").innerHTML = "";
+    }
+    
+    
+}
+
+ function nnnumber(){
+    var number = document.getElementById("phone").value;
+    var phoneno = /^\d{10}$/;
+    if(number.match(phoneno)){
+        document.getElementById("spanphone").innerHTML = ""
+
+    }else{
+        document.getElementById("spanphone").innerHTML = "Incorrect Mobile number"
+    }
+
+    }
+
+ 
+
+function emaila(){
+    
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var email = document.getElementById("email").value;
+    if(email=="")
+    {
+        document.getElementById("spanemail").innerHTML = "";
+    }
+    if(!(email.match(validRegex))){
+        document.getElementById("spanemail").innerHTML = "Incorrect email";
+    }
+    else{
+        document.getElementById("spanemail").innerHTML = "";
+    }
+
+} 
+</script>
+
+
+</html>

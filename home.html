@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <style>
+        .nav-link{
+            font-size: 1.5vw;
+            
+        }
+        .nav-link.active{
+            margin-right: 2.5vw;
+            margin-left: 2.5vw;
+            text-align: center;
+            color: black;
+        }
+        .nav-link.active:hover{
+          color: rgb(94, 90, 90);
+          border-bottom: 2px solid black;
+        }
+
+        .navbar-brand{
+            padding-right: 5vw;
+        }
+        
+        
+        p{
+            margin-left: 20px;
+            text-decoration: none;
+            color: #000;
+            margin-bottom: 1vw;
+            font-size: 1.5vw;
+        }
+        a{
+          text-decoration: none;
+        }
+        .form-control.form-control{
+            width: 20vw;
+           
+        }
+        input{
+            margin-right: 4vw;
+        }
+        .img{
+          width: 95%;
+          margin-left: 2.5%;
+          margin-right: 2.5%;
+        }
+        body{
+          background-color: #dedddd;
+        }
+        .navbar{
+          background-color: #dedddd;
+        }
+        #sub_button{
+          background-color: #dedddd;
+          border: none;
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="img/logo.png" alt="" srcset=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about-us.html">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contact-us.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" onclick="logout()">Logout</a>
+              </li>
+              
+              
+            </ul>
+            <form class="d-flex"></form>
+              <input class="form-control " id="inputs" type="search" placeholder="Search" onkeyup="my()" aria-label="Search">
+              
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+
+    <div class="row">
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid1.mp4">
+          <input type="hidden" id="name" name="name" value="Batch Operating System">
+          <input type="hidden" id="id" name="id" value="1">
+          <button type="submit" id="sub_button">
+            <img src="img/th1.jpg" class="img">
+            <p>Batch Operating System</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid2.mp4">
+          <input type="hidden" id="name" name="name" value="Super Champions 2021 💛🦁 | We are the Chennai Boys.!">
+          <input type="hidden" id="id" name="id" value="2">
+          <button type="submit" id="sub_button">
+            <img src="img/th2.jpg" class="img">
+            <p>Super Champions 2021 💛🦁 | We are the Chennai Boys.!</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid3.mp4">
+          <input type="hidden" id="name" name="name" value="Dressing room talks: The final overs with Jaddu">
+          <input type="hidden" id="id" name="id" value="3">
+          <button type="submit" id="sub_button">
+            <img src="img/th3.jpg" class="img">
+            <p>Dressing room talks: The final overs with Jaddu</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid4.mp4">
+          <input type="hidden" id="name" name="name" value="Whether the amount in your bank account is safe ?">
+          <input type="hidden" id="id" name="id" value="4">
+          <button type="submit" id="sub_button">
+            <img src="img/th4.jpg" class="img">
+            <p>Whether the amount in your bank account is safe ?</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid5.mp4">
+          <input type="hidden" id="name" name="name" value="THE RAID ON OSAMA BIN LADEN">
+          <input type="hidden" id="id" name="id" value="5">
+          <button type="submit" id="sub_button">
+            <img src="img/th5.jpg" class="img">
+            <p>THE RAID ON OSAMA BIN LADEN</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid6.mp4">
+          <input type="hidden" id="name" name="name" value="Steve Smith's unusual technique">
+          <input type="hidden" id="id" name="id" value="6">
+          <button type="submit" id="sub_button">
+            <img src="img/th6.jpg" class="img">
+            <p>Steve Smith's unusual technique</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid7.mp4">
+          <input type="hidden" id="name" name="name" value="स्विस बैंक लूट भारत आए Nirav Modi, सबको मिलेंगे 15 लाख | Fake It India S02E12">
+          <input type="hidden" id="id" name="id" value="7">
+          <button type="submit" id="sub_button">
+            <img src="img/th7.jpg" class="img">
+            <p>स्विस बैंक लूट भारत आए Nirav Modi, सबको मिलेंगे 15 लाख | Fake It India S02E12</p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid8.mp4">
+          <input type="hidden" id="name" name="name" value="Marvel Studios' Eternals | Official Hindi Trailer | In Cinemas November 5">
+          <input type="hidden" id="id" name="id" value="8">
+          <button type="submit" id="sub_button">
+            <img src="img/th8.jpg" class="img">
+            <p>Marvel Studios' Eternals | Official Hindi Trailer | In Cinemas November 5 </p>
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        <form action="new.html" method="get">
+          <input type="hidden" id="videoname" name="videoname" value="vid9.mp4">
+          <input type="hidden" id="name" name="name" value="Hotstar Specials Special Ops 1.5 | Official Trailer">
+          <input type="hidden" id="id" name="id" value="9">
+          <button type="submit" id="sub_button">
+            <img src="img/th9.jpg" class="img">
+            <p>Hotstar Specials Special Ops 1.5 | Official Trailer</p>
+          </button>
+        </form>
+      </div>
+    </div>
+</body>
+<script>
+    function my()
+    {
+        input = document.getElementById("inputs");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("tables");
+    tr = document.getElementsByClassName("col-sm-4");
+    t = tr[0].getElementsByTagName("p");
+   
+    
+    for(i=0;i<tr.length;i++)
+    {
+        td = tr[i].getElementsByTagName("p")[0];
+        if(td)
+        {
+            pvalue =  td.innerText;
+            
+            if(pvalue.toUpperCase().indexOf(filter)>-1)
+            {
+                tr[i].style.display = "";
+                
+            }else{
+                tr[i].style.display = "none";
+               pvalue.innerText = "";
+               
+            }
+        }
+    }
+    }
+
+</script>
+<script>
+
+  function logout()
+  {
+    window.location.href = "logout.html";
+  }
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //    var id = location.search.split('id=')[1];
+    //    var video = location.search.split('videoname=')[1];
+    //    var title = location.search.split('name=')[1];
+    //    console.log(video)
+    var searchParams = new URLSearchParams(window.location.search);
+    var id = searchParams.get('id');
+    var video = searchParams.get('videoname');
+    var names = searchParams.get('name');
+
+    localStorage.setItem('videotitle',video);
+    localStorage.setItem('nam', names);
+    localStorage.setItem('id',id);
+    window.location.href = "video.html";
+   </script>
+</body>
+</html>

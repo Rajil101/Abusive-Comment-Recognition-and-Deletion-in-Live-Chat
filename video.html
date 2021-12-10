@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <style>
+        #vid{
+            width: 80%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        #textarea{
+            width: 50%;
+            height: 30px;
+        }
+        
+
+    .form-control{
+        border: 2px solid rgb(46, 44, 44);
+    }
+    #inputss{
+        width: 50%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: inline;
+    }
+    #inputs{
+      width: 30%;
+      margin-right: 1%;
+    }
+
+        .nav-link{
+            font-size: 1.5vw;
+            
+        }
+        .nav-link.active{
+            margin-right: 2.5vw;
+            margin-left: 2.5vw;
+            text-align: center;
+            color: black;
+        }
+        .nav-link.active:hover{
+          color: rgb(94, 90, 90);
+          border-bottom: 2px solid black;
+        }
+        .navbar-brand{
+            padding-right: 5vw;
+        }
+        .img{
+          width: 95%;
+          margin-left: 2.5%;
+          margin-right: 2.5%;
+        }
+        #scrolls{
+            overflow: scroll;
+            height: 150vh;
+        }
+        #commdiv{
+          overflow: scroll;
+          height: 60vh;
+        }
+    #comments{
+        display: inline;
+    }
+    h3{
+        margin-top: 4vh;
+        margin-left: 6%;
+        margin-bottom: 5vh;
+        font-size: 7vh;
+        text-transform: capitalize;
+        
+    }
+    .comments{
+      margin-bottom: 7vw;
+    }
+    .col-9{
+      display: inline-block;
+
+    }
+    .col-3{
+      display: inline-block;
+
+    }
+    /* #comdiv{
+      margin-left: 5vw;
+    } */
+    h2{
+      margin-left: 2vw;
+      font-size: 1.5vw;
+      margin-bottom: 1rem;
+    }
+    a{
+      text-decoration: none;
+    }
+    p{
+            margin-left: 1.1vw;
+            text-decoration: none;
+            color: #000;
+            margin-bottom: 1vw;
+            font-size: 1.5vw;
+      }
+    body{
+          background-color: #dedddd;
+        }
+        .navbar{
+          background-color: #dedddd;
+        }
+
+      #buttonid{
+        width: 10vw;
+        height: 6vh;
+        background-color: #fff;
+        border-radius: 0.5vw;
+        border: none;
+      }
+      #sub_button
+      {
+        border: none;
+        background-color: #dedddd;
+      }
+  
+   
+        
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="img/logo.png" alt="" srcset=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about-us.html">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contact-us.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="logout.html">Logout</a>
+              </li>
+              
+              
+            </ul>
+            <form class="d-flex"></form>
+              <input class="form-control " id="inputs" type="search" placeholder="Search" onkeyup="my()" aria-label="Search">
+              
+            </form>
+          </div>
+        </div>
+      </nav>
+      
+   
+        <div class="row">
+            <div class="col-9" id="cccc">
+                <script>
+                    var x = document.createElement("VIDEO");
+                    var y = document.createElement("h3");
+                    var n = localStorage.getItem('nam');
+                    y.innerHTML = n;
+                    var vv = document.getElementById("cccc");
+                    
+                    var video = localStorage.getItem('videotitle');
+                    var id = localStorage.getItem('id');
+                    console.log(id);
+                if (x.canPlayType("video/mp4")) {
+                    x.setAttribute("src","img/"+video);
+                } else {
+                    x.setAttribute("src","video.ogg");
+                }
+                
+                x.setAttribute("controls", "loop autoplay");
+                x.id = "vid";
+                vv.appendChild(x);
+                vv.appendChild(y);
+                
+                    // localStorage.removeItem('nam');
+                    // localStorage.removeItem('videotitle');
+                </script>
+                <div class="comments">
+                    <input type="text" id="inputss" class="form-control" autocomplete="off" placeholder="Write Somethings here" required>
+                    <button type="submit" id="buttonid" onclick="addcomment()">Comment</button>
+                </div>
+                <div class="m" id="main">
+                  <div class="com" id="commdiv">
+
+                  </div>
+                </div>
+                
+                
+            </div>
+            <div class="col-3" id="scrolls">
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid1.mp4">
+                  <input type="hidden" id="name" name="name" value="Batch Operating System">
+                  <input type="hidden" id="id" name="id" value="1">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th1.jpg" class="img">
+                    <p>Batch Operating System</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid2.mp4">
+                  <input type="hidden" id="name" name="name" value="Super Champions 2021 💛🦁 | We are the Chennai Boys.!">
+                  <input type="hidden" id="id" name="id" value="2">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th2.jpg" class="img">
+                    <p>Super Champions 2021 💛🦁 | We are the Chennai Boys.!</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid3.mp4">
+                  <input type="hidden" id="name" name="name" value="Dressing room talks: The final overs with Jaddu">
+                  <input type="hidden" id="id" name="id" value="3">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th3.jpg" class="img">
+                    <p>Dressing room talks: The final overs with Jaddu</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid4.mp4">
+                  <input type="hidden" id="name" name="name" value="Whether the amount in your bank account is safe ?">
+                  <input type="hidden" id="id" name="id" value="4">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th4.jpg" class="img">
+                    <p>Whether the amount in your bank account is safe ?</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid5.mp4">
+                  <input type="hidden" id="name" name="name" value="THE RAID ON OSAMA BIN LADEN">
+                  <input type="hidden" id="id" name="id" value="5">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th5.jpg" class="img">
+                    <p>THE RAID ON OSAMA BIN LADEN</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid6.mp4">
+                  <input type="hidden" id="name" name="name" value="Steve Smith's unusual technique">
+                  <input type="hidden" id="id" name="id" value="6">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th6.jpg" class="img">
+                    <p>Steve Smith's unusual technique</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid7.mp4">
+                  <input type="hidden" id="name" name="name" value="स्विस बैंक लूट भारत आए Nirav Modi, सबको मिलेंगे 15 लाख | Fake It India S02E12">
+                  <input type="hidden" id="id" name="id" value="7">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th7.jpg" class="img">
+                    <p>स्विस बैंक लूट भारत आए Nirav Modi, सबको मिलेंगे 15 लाख | Fake It India S02E12</p>
+                  </button>
+                </form>
+               </div>
+               <div class="scroll-video">
+                <form action="new.html" method="get">
+                  <input type="hidden" id="videoname" name="videoname" value="vid8.mp4">
+                  <input type="hidden" id="name" name="name" value="Marvel Studios' Eternals | Official Hindi Trailer | In Cinemas November 5">
+                  <input type="hidden" id="id" name="id" value="8">
+                  <button type="submit" id="sub_button">
+                    <img src="img/th8.jpg" class="img">
+                    <p>Marvel Studios' Eternals | Official Hindi Trailer | In Cinemas November 5 </p>
+                  </button>
+                </form>
+               </div>
+               
+            </div>
+            
+        </div>
+
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+<script>
+      var firebaseConfig = {
+  
+  apiKey: "AIzaSyB1SEaWtKNyYHwepc91rRIys7qrAn3VCQ0",
+
+  authDomain: "form-efe8c.firebaseapp.com",
+
+  databaseURL: "https://form-efe8c-default-rtdb.firebaseio.com",
+
+  projectId: "form-efe8c",
+
+  storageBucket: "form-efe8c.appspot.com",
+
+  messagingSenderId: "1007553602245",
+
+  appId: "1:1007553602245:web:6bea88e0de9877ce7ac6ac"
+
+};
+ firebase.initializeApp(firebaseConfig);
+ const auth = firebase.auth();
+ var db = firebase.firestore();
+
+
+ 
+
+var id = localStorage.getItem('id');
+var b = false;
+function fetchdata()
+{
+  if(b)
+  {
+    document.getElementById("commdiv").remove();
+    var com = document.createElement('div');
+    com.setAttribute("id","commdiv");
+    com.setAttribute("class","com");
+    document.getElementById("main").appendChild(com);
+  }
+
+  
+  var ids = id.toString();
+
+  db.collection("comments").where("videoid", "==", ids).orderBy("timestamp", "desc")
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+       var commentt = doc.data().Comment;
+       var timestampp = doc.data().email;
+
+
+      //  var node = document.createElement("LI");                 // Create a <li> node
+      //  var textnode = document.createTextNode(timestampp);         // Create a text node
+      //  node.appendChild(textnode);                              // Append the text to <li>
+      //  document.getElementById("commdiv").appendChild(node);
+       var h = document.createElement('h2');
+       h.innerHTML = commentt;
+       var p = document.createElement('p');
+       p.innerHTML = timestampp;
+       var maindiv = document.getElementById("commdiv");
+       var d1 = document.createElement('div');
+       var d2 = document.createElement('div');
+       var d3 = document.createElement('div');
+       d1.setAttribute("class","col-9");
+       d2.setAttribute("class","col-3");
+       d3.setAttribute("class","ccom");
+       d1.setAttribute("id","comdiv");
+       d2.setAttribute("id","comdiv2");
+       d3.setAttribute("id","commentss");
+       h.setAttribute("id","commh");
+       p.setAttribute("id","commp");
+       d1.appendChild(h);
+       d2.appendChild(p);
+       d3.appendChild(d1);
+       d3.appendChild(d2);
+       maindiv.appendChild(d3);
+       
+
+
+
+
+      //  var comm =  document.getElementById("commentss");
+      //  var h = document.createElement('h2');
+      //  var p = document.createElement('p');
+      //  var d = document.createElement('div');
+      //  var dd = document.createElement('div');
+      //  var maindiv = document.createElement('div');
+      //  dd.setAttribute("class","ccom");
+      //  d.setAttribute("id","comdiv");
+      //  d.setAttribute("class","col-9");
+      //  var d1 = document.createElement('div');
+      //  d1.setAttribute("id","comdiv1");
+      //  d1.setAttribute("class","col-3");
+
+
+      //  h.innerHTML = commentt;
+      //  p.innerHTML = timestampp;
+
+      //  d.appendChild(h); d1.appendChild(p);
+      //  comm.appendChild(d);
+      //  comm.appendChild(d1);
+      //  comm.dd;
+      
+      
+            console.log(doc.id, " => ", doc.data());
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+    b=true;
+}
+fetchdata();
+
+
+    function my()
+    {
+        input = document.getElementById("inputs");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("tables");
+    tr = document.getElementsByClassName("scroll-video");
+    t = tr[0].getElementsByTagName("p");
+   
+    
+    for(i=0;i<tr.length;i++)
+    {
+        td = tr[i].getElementsByTagName("p")[0];
+        if(td)
+        {
+            pvalue =  td.innerText;
+            
+            if(pvalue.toUpperCase().indexOf(filter)>-1)
+            {
+                tr[i].style.display = "";
+                
+            }else{
+                tr[i].style.display = "none";
+               pvalue.innerText = "";
+               
+            }
+        }
+    }
+    }
+
+    function button() {
+    var videoname = document.getElementById("videoname").value;
+    var name = document.getElementById("name").value;
+    console.log(name+" "+ videoname);
+    localStorage.setItem('videotitle',videoname);
+    localStorage.setItem('nam', name);
+
+    window.location.href = "video.html";
+  }
+
+  function addcomment()
+  {
+
+    var textarea = document.getElementById("inputss").value;
+    var email1 = localStorage.getItem('name');
+    var start = Date.now();
+    var n = start.toString();
+    var id = localStorage.getItem('id');
+    console.log(textarea);
+    db.collection("comments").doc(n).set({
+   Comment: textarea,
+   timestamp: n,
+   bool: true,
+   email: email1,
+   videoid:id
+})
+.then(() => {
+    console.log("Document successfully written!");
+    
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+
+});
+
+
+    var textarea = document.getElementById("inputss").value;
+    var email1 = localStorage.getItem('name');
+    
+
+
+    var target = document.getElementById("commentss");
+    var h = document.createElement('h2');
+    var p = document.createElement('p');
+    var d = document.createElement('div');
+    var dd = document.createElement('div');
+    dd.setAttribute("class","ccom");
+    d.setAttribute("id","comdiv");
+    d.setAttribute("class","col-9");
+    var d1 = document.createElement('div');
+    d1.setAttribute("id","comdiv1");
+    d1.setAttribute("class","col-3");
+    h.innerHTML = textarea;
+    p.innerHTML = email1;
+    d.appendChild(h); d1.appendChild(p);
+    dd.appendChild(d); dd.appendChild(d1);
+    
+
+
+    
+    target.insertBefore(dd,target.childNodes[0]);
+    document.getElementById("commdiv").value="";
+    
+    
+  }
+  db.collection("comments").where("bool", "==",true)
+    .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+            if (change.type === "removed") {
+                var id = localStorage.getItem('id');
+                if(change.doc.data().videoid==id)
+                {
+                  console.log("yes");
+                  fetchdata();
+                  
+                }
+                console.log("Removed city: ", change.doc.data());
+                
+            }
+        });
+    });
+</script>
+
+</html>

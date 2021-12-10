@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <style>
+            body{
+          background-color: #dedddd;
+        }
+        .navbar{
+          background-color: #dedddd;
+        }
+        .nav-link{
+            font-size: 1.5vw;
+            
+        }
+        .nav-link.active{
+            margin-right: 2.5vw;
+            margin-left: 2.5vw;
+            text-align: center;
+            color: black;
+        }
+        .nav-link.active:hover{
+          color: rgb(94, 90, 90);
+          border-bottom: 2px solid black;
+        }
+        .navbar-brand{
+            padding-right: 5vw;
+        }
+        #inputs{
+            width: 30%;
+            margin-right: 1%;
+    }
+    .mainclass{
+        margin-left: 30vw;
+        background-color: #dedddd;
+        padding-left: 6.5vw;
+        margin-top: 10vh;
+        width: 40vw;
+        height: 80vh;
+
+    }
+    body{
+        background-color: #dedddd;
+       
+    }
+    .inputs{
+        width: 80%;
+        height: 6vh;
+        margin-bottom: 2vh;
+        margin-top: 1vh;
+        border: 1px solid #1b1b1b;
+        border-radius: 0.5vw;
+    }
+    #button{
+        margin-top: 2vh;
+        margin-left: 8vw;
+        height: 6.5vh;
+        width: 10vw;
+        border-radius: 1vh;
+        font-size: 2.6vh;
+        background-color: #ffffff;
+        border: 1px solid;
+    }
+    img{
+        width: 8vw;
+        margin-left: 3vw;
+    }
+    .social{
+        margin-left: 25vw;
+        margin-top: 5vh;
+    }
+    h3{
+        text-align: center;
+        font-size: 3vw;
+        margin-left: 30vw;
+        margin-right: 25.5vw;
+        border-bottom: 1px solid;
+    }
+    h2{
+        border-bottom: 1px solid;
+        margin-right: 20%;
+        margin-bottom: 5vh;
+    }
+    #contactus{
+      border-bottom: 2px solid black;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="img/logo.png" alt="" srcset=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="about-us.html">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contact-us.html" id="contactus">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="logout.html">Logout</a>
+              </li>
+              
+              
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+      <h3>Contact us on social media</h3>
+      <div class="social">
+        <img src="img/facebook.png" alt="">
+        <img src="img/instagram.png" alt="">
+        <img src="img/telegram.png" alt="">
+        <img src="img/reddit.png" alt="">
+        <img src="img/twitter.png" alt="">
+    </div>
+
+      <div class="mainclass">
+        
+       
+        <h2>Or Write your Message here</h2>
+            
+            <input type="text" name="password" id="password" class="inputs" placeholder="Your feedback" autocomplete="off" required>
+            <button type="submit" id="button" class="buttons" onclick="Button()">Submit</button>
+        
+    </div>
+
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+<script>
+
+var firebaseConfig = {
+  
+  apiKey: "AIzaSyB1SEaWtKNyYHwepc91rRIys7qrAn3VCQ0",
+
+  authDomain: "form-efe8c.firebaseapp.com",
+
+  databaseURL: "https://form-efe8c-default-rtdb.firebaseio.com",
+
+  projectId: "form-efe8c",
+
+  storageBucket: "form-efe8c.appspot.com",
+
+  messagingSenderId: "1007553602245",
+
+  appId: "1:1007553602245:web:6bea88e0de9877ce7ac6ac"
+
+};
+ firebase.initializeApp(firebaseConfig);
+ var db = firebase.firestore();
+ 
+ function   Button()
+ {
+   var email = localStorage.getItem('name');
+   var message = document.getElementById("password").value;
+   var start = Date.now();
+   var n = start.toString();
+   console.log(n);
+
+  db.collection("feedbacks").doc(n).set({
+    Email:email,
+    Message:message
+})
+.then(() => {
+    console.log("Document successfully written!");
+    alert("Thanks for your valuable feedback");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+
+});
+ }
+</script>
+</html>
