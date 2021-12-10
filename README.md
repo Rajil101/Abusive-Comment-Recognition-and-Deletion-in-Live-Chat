@@ -1,4 +1,4 @@
-# minorproject
+# Minorproject - Abusive Comment Recognition and Deletion in Live Chat
 
 These abusive comment detection and deletion in live chat application is made during the minor project creation. You can Create your own live recognition and deletion application 
 by taking reference of it. 
